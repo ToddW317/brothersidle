@@ -615,30 +615,61 @@ export const useGameStore = create<GameState>((set, get) => ({
     const [specialization, path, nodeName] = nodeId.split('-')
     const tree = state.skillTrees[specialization as Industry]
     
-    if (!tree) return false
+    if (!tree) {
+      console.log('Tree not found:', specialization)
+      return false
+    }
     
     // Find the node
     const node = tree.paths
       .flatMap(p => p.nodes)
       .find(n => n.id === nodeId)
       
-    if (!node) return false
+    if (!node) {
+      console.log('Node not found:', nodeId)
+      return false
+    }
     
     // Check if already allocated
-    if (tree.allocatedNodes.includes(nodeId)) return false
+    if (tree.allocatedNodes.includes(nodeId)) {
+      console.log('Node already allocated:', nodeId)
+      return false
+    }
     
     // Check if we have points available
-    if (tree.availablePoints < 1) return false
+    if (tree.availablePoints < 1) {
+      console.log('No points available')
+      return false
+    }
     
     // Check level requirement
     const currentLevel = state.specializationProgress[specialization as Industry].level
-    if (currentLevel < node.requirements.level) return false
+    console.log('Level check:', { required: node.requirements.level, current: currentLevel })
+    if (currentLevel < node.requirements.level) {
+      console.log('Level requirement not met')
+      return false
+    }
     
     // If this is the first node in any path, it's allocatable
-    if (tree.allocatedNodes.length === 0 && node.position.y === 100) return true
+    if (tree.allocatedNodes.length === 0 && node.position.y === 100) {
+      console.log('First node in path, allocatable')
+      return true
+    }
     
-    // Check if connected to an allocated node
-    return node.connections.some(connId => tree.allocatedNodes.includes(connId))
+    // Check if any allocated node connects to this node
+    const isConnectedTo = tree.allocatedNodes.some(allocatedId => {
+      const allocatedNode = tree.paths
+        .flatMap(p => p.nodes)
+        .find(n => n.id === allocatedId)
+      return allocatedNode?.connections.includes(nodeId)
+    })
+
+    console.log('Connection check:', { 
+      nodeId,
+      allocatedNodes: tree.allocatedNodes,
+      isConnectedTo
+    })
+    return isConnectedTo
   },
   
   getNodeEffect: (type: string, target?: string) => {

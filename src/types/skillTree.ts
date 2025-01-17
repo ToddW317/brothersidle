@@ -1,7 +1,7 @@
 import { Industry } from '@/stores/gameStore'
 
 export type NodeType = 'normal' | 'notable' | 'keystone'
-export type NodePath = 'quarry' | 'ore' | 'processing' | 'growth' | 'cooking' | 'sustainability' | 'woodworking' | 'engineering' | 'innovation' | 'bargaining' | 'market' | 'network'
+export type NodePath = 'mining' | 'farming' | 'crafting' | 'trading'
 
 export interface SkillNodeEffect {
   type: 'production_speed' | 'resource_cost' | 'resource_gain' | 'chance_bonus' | 'unlock_feature'

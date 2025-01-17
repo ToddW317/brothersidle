@@ -8,216 +8,138 @@ export const MINING_SKILL_TREE: SkillTree = {
   specialization: 'mining',
   paths: [
     {
-      id: 'quarry',
-      name: 'Quarry Path',
-      description: 'Focus on stone production and processing',
+      id: 'mining',
+      name: 'Mining Path',
+      description: 'Master the art of mining and resource processing',
       specialization: 'mining',
       nodes: [
+        // First Row (Left to Right)
         {
-          id: generateNodeId('mining', 'quarry', 'Stone Efficiency'),
-          name: 'Stone Efficiency',
+          id: generateNodeId('mining', 'mining', 'Stone Mastery'),
+          name: 'Stone Mastery',
           type: 'normal',
-          path: 'quarry',
-          position: { x: 300, y: 100 },
-          connections: [generateNodeId('mining', 'quarry', 'Advanced Quarrying')],
+          path: 'mining',
+          position: { x: 100, y: 100 },
+          connections: [generateNodeId('mining', 'mining', 'Efficient Quarrying')],
           effects: [
             { type: 'production_speed', value: 10, description: '+10% stone production', target: 'stone' }
           ],
-          description: 'Increase stone production efficiency',
+          description: 'Improve stone production efficiency',
           requirements: { level: 1, skillPoints: 1 },
           specialization: 'mining'
         },
         {
-          id: generateNodeId('mining', 'quarry', 'Advanced Quarrying'),
-          name: 'Advanced Quarrying',
+          id: generateNodeId('mining', 'mining', 'Efficient Quarrying'),
+          name: 'Efficient Quarrying',
           type: 'normal',
-          path: 'quarry',
-          position: { x: 300, y: 200 },
-          connections: [
-            generateNodeId('mining', 'quarry', 'Stone Efficiency'),
-            generateNodeId('mining', 'quarry', 'Master Quarry')
-          ],
+          path: 'mining',
+          position: { x: 300, y: 100 },
+          connections: [generateNodeId('mining', 'mining', 'Resource Conservation')],
           effects: [
-            { type: 'production_speed', value: 10, description: '+10% stone production', target: 'stone' },
-            { type: 'resource_cost', value: -5, description: '-5% resource cost', target: 'stone' }
+            { type: 'resource_cost', value: -10, description: '-10% resource cost', target: 'stone' }
           ],
-          description: 'Improved stone production efficiency',
+          description: 'Reduce stone mining costs',
+          requirements: { level: 2, skillPoints: 1 },
+          specialization: 'mining'
+        },
+        {
+          id: generateNodeId('mining', 'mining', 'Resource Conservation'),
+          name: 'Resource Conservation',
+          type: 'notable',
+          path: 'mining',
+          position: { x: 500, y: 100 },
+          connections: [generateNodeId('mining', 'mining', 'Basic Ore Mining')],
+          effects: [
+            { type: 'resource_cost', value: -15, description: '-15% resource cost for all mining', target: 'all' }
+          ],
+          description: 'Significantly reduce mining costs',
           requirements: { level: 3, skillPoints: 2 },
           specialization: 'mining'
         },
+        // Second Row (Right to Left)
         {
-          id: generateNodeId('mining', 'quarry', 'Master Quarry'),
-          name: 'Master Quarry',
-          type: 'notable',
-          path: 'quarry',
-          position: { x: 300, y: 300 },
-          connections: [
-            generateNodeId('mining', 'quarry', 'Advanced Quarrying'),
-            generateNodeId('mining', 'quarry', 'Quarry Mastery'),
-            generateNodeId('mining', 'ore', 'Ore Efficiency')
-          ],
-          effects: [
-            { type: 'chance_bonus', value: 10, description: '10% chance to produce double stone', target: 'stone' }
-          ],
-          description: 'Chance to double stone production',
-          requirements: { level: 5, skillPoints: 3 },
-          specialization: 'mining'
-        },
-        {
-          id: generateNodeId('mining', 'quarry', 'Quarry Mastery'),
-          name: 'Quarry Mastery',
-          type: 'keystone',
-          path: 'quarry',
-          position: { x: 300, y: 400 },
-          connections: [generateNodeId('mining', 'quarry', 'Master Quarry')],
-          effects: [
-            { type: 'unlock_feature', value: 20, description: '20% chance for stone to produce ore', target: 'ore' }
-          ],
-          description: 'Stone production can yield ore',
-          requirements: { level: 7, skillPoints: 4 },
-          specialization: 'mining'
-        }
-      ]
-    },
-    {
-      id: 'ore',
-      name: 'Ore Path',
-      description: 'Focus on ore mining and precious metals',
-      specialization: 'mining',
-      nodes: [
-        {
-          id: generateNodeId('mining', 'ore', 'Ore Efficiency'),
-          name: 'Ore Efficiency',
+          id: generateNodeId('mining', 'mining', 'Basic Ore Mining'),
+          name: 'Basic Ore Mining',
           type: 'normal',
-          path: 'ore',
-          position: { x: 500, y: 100 },
-          connections: [generateNodeId('mining', 'ore', 'Deep Mining')],
-          effects: [
-            { type: 'production_speed', value: 5, description: '+5% ore production', target: 'ore' }
-          ],
-          description: 'Increase ore production speed',
-          requirements: { level: 5, skillPoints: 1 },
-          specialization: 'mining'
-        },
-        {
-          id: generateNodeId('mining', 'ore', 'Deep Mining'),
-          name: 'Deep Mining',
-          type: 'normal',
-          path: 'ore',
+          path: 'mining',
           position: { x: 500, y: 200 },
-          connections: [
-            generateNodeId('mining', 'ore', 'Ore Efficiency'),
-            generateNodeId('mining', 'ore', 'Precious Metals'),
-            generateNodeId('mining', 'processing', 'Efficient Smelting')
-          ],
+          connections: [generateNodeId('mining', 'mining', 'Advanced Mining')],
           effects: [
-            { type: 'production_speed', value: 10, description: '+10% ore production', target: 'ore' },
-            { type: 'chance_bonus', value: 2, description: '2% chance to find rare materials', target: 'ore' }
+            { type: 'production_speed', value: 10, description: '+10% ore production', target: 'ore' }
           ],
-          description: 'Advanced ore extraction techniques',
+          description: 'Begin ore mining operations',
+          requirements: { level: 5, skillPoints: 2 },
+          specialization: 'mining'
+        },
+        {
+          id: generateNodeId('mining', 'mining', 'Advanced Mining'),
+          name: 'Advanced Mining',
+          type: 'normal',
+          path: 'mining',
+          position: { x: 300, y: 200 },
+          connections: [generateNodeId('mining', 'mining', 'Mining Expertise')],
+          effects: [
+            { type: 'production_speed', value: 15, description: '+15% mining speed for all resources', target: 'all' }
+          ],
+          description: 'Improve all mining operations',
           requirements: { level: 6, skillPoints: 2 },
           specialization: 'mining'
         },
         {
-          id: generateNodeId('mining', 'ore', 'Precious Metals'),
-          name: 'Precious Metals',
+          id: generateNodeId('mining', 'mining', 'Mining Expertise'),
+          name: 'Mining Expertise',
           type: 'notable',
-          path: 'ore',
-          position: { x: 500, y: 300 },
-          connections: [
-            generateNodeId('mining', 'ore', 'Deep Mining'),
-            generateNodeId('mining', 'ore', 'Core Tapper')
-          ],
+          path: 'mining',
+          position: { x: 100, y: 200 },
+          connections: [generateNodeId('mining', 'mining', 'Basic Smelting')],
           effects: [
-            { type: 'chance_bonus', value: 5, description: '5% chance to find gold while mining ore', target: 'ore' }
+            { type: 'chance_bonus', value: 10, description: '10% chance for double resources', target: 'all' }
           ],
-          description: 'Chance to find gold while mining ore',
+          description: 'Chance to get bonus resources',
           requirements: { level: 7, skillPoints: 3 },
           specialization: 'mining'
         },
+        // Third Row (Left to Right)
         {
-          id: generateNodeId('mining', 'ore', 'Core Tapper'),
-          name: 'Core Tapper',
-          type: 'keystone',
-          path: 'ore',
-          position: { x: 500, y: 400 },
-          connections: [generateNodeId('mining', 'ore', 'Precious Metals')],
-          effects: [
-            { type: 'chance_bonus', value: 10, description: '10% chance for double metal from smelting', target: 'metal' }
-          ],
-          description: 'Significantly improve metal smelting',
-          requirements: { level: 8, skillPoints: 4 },
-          specialization: 'mining'
-        }
-      ]
-    },
-    {
-      id: 'processing',
-      name: 'Processing Path',
-      description: 'Focus on resource processing and efficiency',
-      specialization: 'mining',
-      nodes: [
-        {
-          id: generateNodeId('mining', 'processing', 'Resource Conservation'),
-          name: 'Resource Conservation',
+          id: generateNodeId('mining', 'mining', 'Basic Smelting'),
+          name: 'Basic Smelting',
           type: 'normal',
-          path: 'processing',
-          position: { x: 700, y: 100 },
-          connections: [generateNodeId('mining', 'processing', 'Efficient Smelting')],
+          path: 'mining',
+          position: { x: 100, y: 300 },
+          connections: [generateNodeId('mining', 'mining', 'Efficient Smelting')],
           effects: [
-            { type: 'resource_cost', value: -5, description: '-5% resource cost in all processing', target: 'all' }
+            { type: 'production_speed', value: 10, description: '+10% metal production', target: 'metal' }
           ],
-          description: 'Reduce resource costs in processing',
-          requirements: { level: 3, skillPoints: 1 },
+          description: 'Begin metal smelting operations',
+          requirements: { level: 8, skillPoints: 2 },
           specialization: 'mining'
         },
         {
-          id: generateNodeId('mining', 'processing', 'Efficient Smelting'),
+          id: generateNodeId('mining', 'mining', 'Efficient Smelting'),
           name: 'Efficient Smelting',
           type: 'normal',
-          path: 'processing',
-          position: { x: 700, y: 200 },
-          connections: [
-            generateNodeId('mining', 'processing', 'Resource Conservation'),
-            generateNodeId('mining', 'processing', 'Mass Production')
-          ],
+          path: 'mining',
+          position: { x: 300, y: 300 },
+          connections: [generateNodeId('mining', 'mining', 'Master Smelter')],
           effects: [
-            { type: 'resource_cost', value: -10, description: '-10% metal crafting cost', target: 'metal' }
+            { type: 'resource_cost', value: -15, description: '-15% ore cost in smelting', target: 'ore' }
           ],
-          description: 'Improve metal crafting efficiency',
-          requirements: { level: 4, skillPoints: 2 },
+          description: 'Reduce smelting costs',
+          requirements: { level: 9, skillPoints: 2 },
           specialization: 'mining'
         },
         {
-          id: generateNodeId('mining', 'processing', 'Mass Production'),
-          name: 'Mass Production',
-          type: 'notable',
-          path: 'processing',
-          position: { x: 700, y: 300 },
-          connections: [
-            generateNodeId('mining', 'processing', 'Efficient Smelting'),
-            generateNodeId('mining', 'processing', 'Master Processor'),
-            generateNodeId('mining', 'quarry', 'Master Quarry')
-          ],
-          effects: [
-            { type: 'production_speed', value: 15, description: '+15% production speed for all mining activities', target: 'all' }
-          ],
-          description: 'Significantly increase production speed',
-          requirements: { level: 6, skillPoints: 3 },
-          specialization: 'mining'
-        },
-        {
-          id: generateNodeId('mining', 'processing', 'Master Processor'),
-          name: 'Master Processor',
+          id: generateNodeId('mining', 'mining', 'Master Smelter'),
           type: 'keystone',
-          path: 'processing',
-          position: { x: 700, y: 400 },
-          connections: [generateNodeId('mining', 'processing', 'Mass Production')],
+          name: 'Master Smelter',
+          path: 'mining',
+          position: { x: 500, y: 300 },
+          connections: [],
           effects: [
-            { type: 'resource_cost', value: -25, description: 'All processing costs reduced by 25%', target: 'all' }
+            { type: 'chance_bonus', value: 20, description: '20% chance for double metal from smelting', target: 'metal' }
           ],
-          description: 'Mastery of resource processing',
-          requirements: { level: 8, skillPoints: 4 },
+          description: 'Master the art of smelting',
+          requirements: { level: 10, skillPoints: 4 },
           specialization: 'mining'
         }
       ]
