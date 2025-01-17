@@ -1,0 +1,120 @@
+🎮 Brothers Idle - Development Status
+
+✅ COMPLETED FEATURES
+-------------------
+
+1. Core Game Systems
+   - Resource management (basic & advanced)
+   - Production chains with upgrades
+   - Specialization system
+   - Level-based progression with XP
+   - Market system with dynamic pricing
+
+2. Mining Specialization
+   - Full skill tree with 3 paths:
+     * Quarry Path (stone focus)
+     * Ore Path (metals & precious)
+     * Processing Path (efficiency)
+   - Features:
+     * Cross-path connections
+     * Node types: Normal, Notable, Keystone
+
+3. UI Components
+   - Collapsible skill tree with animations
+   - Resource display with icons
+   - Production section with efficiency indicators
+   - Tooltips for skill nodes
+   - Market interface
+
+4. Game Balance
+   - Base production rates
+   - XP scaling system
+   - Market price fluctuations
+   - Upgrade costs and scaling
+
+🚧 NEEDS IMPLEMENTATION
+---------------------
+
+1. Other Specializations
+   
+   Farming Tree:
+   - Crops Path
+   - Livestock Path
+   - Food Processing Path
+
+   Crafting Tree:
+   - Woodworking Path
+   - Toolmaking Path
+   - Engineering Path
+
+   Trading Tree:
+   - Bargaining Path
+   - Market Analysis Path
+   - Trade Routes Path
+
+2. Save System
+   - Local storage implementation
+   - Multiple save slots
+   - Auto-save functionality
+   - Save data versioning
+
+3. Achievement System
+   - Production milestones
+   - Specialization achievements
+   - Cross-specialization challenges
+   - UI for tracking
+
+4. Quality of Life
+   - Production automation
+   - Statistics tracking
+   - Tutorial system
+   - Sound effects
+   - Visual feedback improvements
+
+5. Additional Features
+   - Prestige system
+   - Events/challenges
+   - Social features (optional)
+
+🛠️ TECHNICAL STACK
+----------------
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Zustand (state management)
+- HeroIcons
+
+📁 CODE STRUCTURE
+---------------
+Key Directories:
+- /src/stores - Game state management
+- /src/components - UI components
+- /src/types - TypeScript definitions
+- /src/data - Game data and configs
+
+Important Files:
+- gameStore.ts - Core game logic
+- skillTrees.ts - Skill tree definitions
+- SkillTree.tsx - Skill tree visualization
+- ResourceDisplay.tsx - Resource UI
+
+🔍 DEVELOPMENT GUIDELINES
+----------------------
+1. Code Style
+   - Strict TypeScript
+   - Functional components
+   - Feature-based organization
+   - Modular design
+
+2. Naming Conventions
+   - PascalCase for components
+   - camelCase for functions/variables
+   - lowercase-hyphen for files
+
+3. Key Focus Areas
+   - Performance optimization
+   - Game balance
+   - User experience
+   - Clear feedback
+   - Intuitive interfaces
+   - Consistent styling
