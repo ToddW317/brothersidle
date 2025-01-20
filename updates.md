@@ -147,3 +147,58 @@ Next Steps:
   - Using proper node ID format with generateNodeId
   - Fixed first node allocation logic
   - Updated node connections to use consistent IDs 
+
+## [2024-03-21] - v0.2.5
+### Added
+- Implemented remaining skill trees:
+  - Farming Tree:
+    - Growth Path with food production and meal preparation nodes
+    - Progression from Quick Growth to Master Chef
+    - Focus on food production speed and meal quality
+  
+  - Crafting Tree:
+    - Woodworking Path with wood production and engineering nodes
+    - Progression from Wood Efficiency to Master Engineer
+    - Focus on resource efficiency and machine production
+  
+  - Trading Tree:
+    - Bargaining Path with market and price manipulation nodes
+    - Progression from Better Deals to Market Maker
+    - Focus on trade prices and market predictions
+
+### Technical Details
+- Each tree follows consistent structure with Mining tree
+- Maintained proper node positioning and connections
+- Implemented appropriate level requirements and skill point costs
+- Added effect types matching game mechanics (production_speed, resource_cost, chance_bonus) 
+
+## [2024-03-21] - v0.2.6
+### Added
+- Extended all skill trees to 9 nodes each, matching Mining tree structure:
+
+  Farming Tree:
+  - Added third tier progression:
+    - Basic Feast (Level 8): +15% feast production
+    - Advanced Feast (Level 9): -20% resource cost in feasts
+    - Feast Master (Level 10): 25% chance for legendary feast
+  - Updated node connections for proper progression
+  
+  Crafting Tree:
+  - Added automation branch:
+    - Basic Automation (Level 8): +15% automated production
+    - Advanced Automation (Level 9): -20% automation setup costs
+    - Automation Master (Level 10): 25% chance for automated bonus production
+  - Connected engineering path to automation
+  
+  Trading Tree:
+  - Added empire building branch:
+    - Trade Network (Level 8): +15% trade volume
+    - Trade Empire (Level 9): -20% trade costs
+    - Trade Mogul (Level 10): 25% chance for special trades
+  - Enhanced market maker path connections
+
+### Technical Details
+- Maintained consistent level progression (8-10) for third tier
+- Added proper node connections between tiers
+- Balanced effects and requirements across specializations
+- Each tree now has equal depth and complexity 
